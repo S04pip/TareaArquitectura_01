@@ -12,56 +12,33 @@
 	\maketitle
 	
 	
-	\section{Repertorio de Instrucciones}
+	\section{Operandos Mips}
 	
-	El repertorio de instrucciones de un procesador es el conjunto de operaciones que pueden ejecutarse directamente en el hardware. Estas instrucciones incluyen cálculos aritméticos, manipulaciones de memoria y control de flujo de ejecución.
+	\subsection{32 Registros}
 	
-	Los lenguajes de programación de alto nivel como \textbf{C o Java} permiten a los desarrolladores escribir código de manera más intuitiva. Sin embargo, para que el hardware ejecute estos programas, el código debe traducirse a lenguaje ensamblador y luego a lenguaje de máquina.
-	\\
+	Localizaciones rápidas para los datos. En MIPS, los datos deben estar en los registros para realizar operaciones aritméticas. El registro MIPS \$zero es siempre igual a O. El registro \$ at está reservado por el ensamblador para manejar constantes grandes. Ejemplo:
 	
-	El proceso de traducción ocurre en varias etapas:
-	\begin{enumerate}
-		\item \textbf{Código fuente}: Escrito en un lenguaje como C.
-		\item \textbf{Lenguaje ensamblador}: Representa instrucciones en un formato más cercano al hardware.
-		\item \textbf{Lenguaje de máquina}: Conjunto de bits interpretados por el procesador.
-	\end{enumerate}
+	\begin{center}
+		\$s0-\$s7. \$t0-\$t9.\\
+		\$zero. \$a0-\$a3.\\
+		\$vO-\$v1. \$gp. \$fp. \$sp.\\
+		\$ra. \$at\\
+	\end{center}
 	
-	\section{Operaciones en MIPS}
+	\subsection{$2^{30}$ Palabras de memoria}
 	
-	MIPS es una arquitectura basada en el paradigma \textbf{RISC (Reduced Instruction Set Computing)}, lo que implica un repertorio de instrucciones simplificado, con una estructura clara y uniforme.
-	\\\\\\
-	Ejemplo de suma en lenguaje ensamblador:
-	\begin{lstlisting}
-	add a, b, c   # Suma b y c, almacena el resultado en a
-	\end{lstlisting}
-	En MIPS, cada instrucción:
-	\begin{itemize}
-		\item Ejecuta \textbf{una sola operación}.
-		\item Tiene \textbf{exactamente tres operandos} (dos fuentes y un destino).
-		\item Se estructura de manera predecible para optimizar el hardware.
-	\end{itemize}
+	Accesibles solamente por instrucciones de transferencia de datos. MIPS utiliza direcciones de byte, de modo que las direcciones de palabras consecutivas se diferencian en 4. La memoria guarda las estructuras de datos, las tablas y los registros desbordados (guardados). Ejemplo:
 	
-	Si se requiere la suma de cuatro variables, se emplean varias instrucciones:
+	\begin{center}
+		Memory[0],\\
+		Memory[4], ... ,\\
+		Memory[4294967292]
+	\end{center}
 	
-	\begin{lstlisting}
-	add a, b, c   # Suma b y c
-	add a, a, d   # Suma el resultado anterior con d
-	add a, a, e   # Suma el resultado anterior con e
-	\end{lstlisting}
-	
-	Este diseño permite una implementación eficiente en hardware, simplificando los circuitos y mejorando la velocidad de ejecución.
-	
-	\subsection{Operandos Mips}
-	
-	\begin{flushleft}
-	\includegraphics[width=1.2\linewidth]{OperandosMips.jpg}
-	\end{flushleft}
-	
-	\subsection{Lenguaje Esamblador Mips}
+	\section{Lenguaje Ensamblador Mips}
 	
 	\begin{flushleft}
 		\includegraphics[width=1.2\linewidth]{LenguajeEsambladorMips.jpg}
-	\end{flushleft}
-	
+		\end{flushleft}
 	
 \end{document}
